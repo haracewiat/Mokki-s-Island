@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class Manager<T> : MonoBehaviour
+public abstract class Manager<T> : MonoBehaviour
 {
     private static Manager<T> _instance;
+
+    [SerializeField] protected Data data = null;
 
     public static Manager<T> Instance => _instance;
 
@@ -17,5 +20,27 @@ public class Manager<T> : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+
+    private void Start()
+    {
+        EventManager.SubscribeTo(EventID.DataLoaded, OnDataLoaded);
+        EventManager.SubscribeTo(EventID.DataChanged, OnDataChanged);
+
+        EventManager.NotifyAbout(EventID.DataRequested, "");
+
+        Init();
+    }
+
+    protected virtual void Init() { }
+
+    protected virtual void OnDataLoaded(object parameter)
+    {
+        if (data != null) { data = (Data)parameter; }
+    }
+
+    protected virtual void OnDataChanged(object parameter)
+    {
+        data = (Data)parameter;
     }
 }

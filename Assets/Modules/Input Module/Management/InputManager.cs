@@ -8,6 +8,19 @@ public class InputManager : Manager<InputManager>
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("S");
+            EventManager.NotifyAbout(EventID.SaveRequestMade, "");
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("L");
+            EventManager.NotifyAbout(EventID.LoadRequestMade, "");
+        }
+
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);

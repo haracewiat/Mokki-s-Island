@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,19 +9,20 @@ public class MoveCommand : Command
 
     NavMeshAgent _navMeshAgent;
 
-    public MoveCommand(MonoBehaviour executor, Vector3 targetLocation) : base(executor)
+    public MoveCommand(string executorID, Vector3 targetLocation) : base(executorID)
     {
         _targetLocation = targetLocation;
     }
 
     public override void Execute()
     {
-        Debug.Log($"{_targetLocation} will be executed now!");
+        Debug.Log(executorID);
+        GameObject _executorObject = Registry.GetObject(executorID);
 
-        _navMeshAgent = _executor.GetComponent<NavMeshAgent>();
-        
+        _navMeshAgent = _executorObject.GetComponent<NavMeshAgent>();
+
         _navMeshAgent.SetDestination(_targetLocation);
-        
+
         WaitForPathComplete();
     }
 
@@ -35,10 +33,19 @@ public class MoveCommand : Command
 
     private async void WaitForPathComplete()
     {
+        // Allow some time for the navMeshAgent to update its properties
+        await Task.Delay(500);
+
+        // Slow poll
         while (_navMeshAgent.pathPending || _navMeshAgent.hasPath)
             await Task.Delay(CommandManager.WaitingRate);
 
         _isFinished = true;
+    }
+
+    public override void Abort()
+    {
+        _navMeshAgent.ResetPath();
     }
 
     public override string ToString()

@@ -56,15 +56,32 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Modules\Event Module\Management\EventManager.cs" />
-    <Compile Include="Assets\Modules\Event Module\Registry\EventID.cs" />
-    <Compile Include="Assets\Modules\Event Module\Components\Event.cs" />
-    <Compile Include="Assets\Modules\Core Module\Components\Manager.cs" />
-    <Compile Include="Assets\Modules\Input Module\Management\InputManager.cs" />
-    <Compile Include="Assets\Modules\Player Module\Monobehaviour\PlayerMonobehaviour.cs" />
     <Compile Include="Assets\Modules\Command Module\Components\Command.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\CommandData.cs" />
+    <Compile Include="Assets\Modules\Data Module\Registry\Data.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\GameData.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\MotionData.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\TransformData.cs" />
+    <Compile Include="Assets\Modules\Save Module\Management\SaveManager.cs" />
+    <Compile Include="Assets\Modules\Save Module\Components\Save.cs" />
+    <Compile Include="Assets\Modules\UI Manager\Management\UIManager.cs" />
     <Compile Include="Assets\Modules\Command Module\Management\CommandManager.cs" />
+    <Compile Include="Assets\Modules\Test.cs" />
+    <Compile Include="Assets\Modules\Player Module\Monobehaviour\PlayerMonobehaviour.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\SystemData.cs" />
+    <Compile Include="Assets\Modules\Event Module\Components\Event.cs" />
     <Compile Include="Assets\Modules\Command Module\Components\MoveCommand.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\ActionsData.cs" />
+    <Compile Include="Assets\Modules\UI Manager\Components\HudUI.cs" />
+    <Compile Include="Assets\Modules\Event Module\Registry\EventID.cs" />
+    <Compile Include="Assets\Modules\Game Module\Management\GameManager.cs" />
+    <Compile Include="Assets\Modules\Core Module\Components\Manager.cs" />
+    <Compile Include="Assets\Modules\UI Manager\Components\ActionTileUI.cs" />
+    <Compile Include="Assets\Modules\Event Module\Management\EventManager.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\PlayerData.cs" />
+    <Compile Include="Assets\Modules\Input Module\Management\InputManager.cs" />
+    <Compile Include="Assets\Modules\Data Module\Management\DataManager.cs" />
+    <Compile Include="Assets\Modules\Core Module\Registry\Registry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

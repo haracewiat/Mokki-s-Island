@@ -1,16 +1,20 @@
 using UnityEngine;
 
+[System.Serializable]
 public abstract class Command 
 {
-    // Executor object?
-    public MonoBehaviour _executor;
+    [SerializeField] protected string executorID;
 
-    public Command(MonoBehaviour executor)
+    public string ExecutorID => executorID;
+
+    public Command(string executorID)
     {
-        _executor = executor;
+        this.executorID = executorID;
     }
 
     public abstract bool IsFinished();
     public abstract void Execute();
+    public abstract void Abort();
+
 }
 
