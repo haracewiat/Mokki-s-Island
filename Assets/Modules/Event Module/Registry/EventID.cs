@@ -16,6 +16,8 @@ public enum EventID
     CommandDispatched, // Issued
     CommandCanceled,
     Move,
+    Space,
+    ExecutorChanged,
 
     DestinationSet,
 }

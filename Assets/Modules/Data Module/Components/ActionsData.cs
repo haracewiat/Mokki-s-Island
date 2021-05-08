@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 [System.Serializable]
@@ -37,6 +38,7 @@ public class CommandsData
 
     public void PushCommand(CommandData commandData)
     {
+        Debug.Log("Adding!");
         commands.Add(commandData);
     }
 
@@ -46,6 +48,17 @@ public class CommandsData
         commands.RemoveAt(0);
 
         return commandData;
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        foreach (CommandData commandData in commands)
+            sb.AppendLine(commandData.ToString());
+
+        return sb.ToString();
+
     }
 
 }

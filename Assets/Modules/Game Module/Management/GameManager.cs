@@ -14,6 +14,22 @@ public class GameManager : Manager<GameManager>
 
 
     private bool flag = true;
+    private int index = 0;
+
+    protected override void Init()
+    {
+        EventManager.SubscribeTo(EventID.Space, OnSpace);
+
+        OnSpace(0);
+    }
+
+    private void OnSpace(object parameter)
+    {
+        index += 1;
+        index %= 2;
+
+        data.GameData.SetCurrentExecutorID(data.GameData.ObjectsData[index].ID);
+    }
 
 
     // TODO change to DataChanged 
@@ -36,7 +52,9 @@ public class GameManager : Manager<GameManager>
                     objectData.SetID(Guid.NewGuid().ToString());
 
                 // Create object instance and inject corresponding data (TODO: cleaner solution)
-                GameObject gameObjectInstance = Instantiate(objectData.Prefab);
+                //GameObject gameObjectInstance = Instantiate(objectData.Prefab) as GameObject;
+                GameObject gameObjectPrefab = Resources.Load(objectData.PrefabID) as GameObject;
+                GameObject gameObjectInstance = Instantiate(gameObjectPrefab);
                 gameObjectInstance.GetComponent<Test>().SetData(objectData); 
 
                 // Store in the lookup table

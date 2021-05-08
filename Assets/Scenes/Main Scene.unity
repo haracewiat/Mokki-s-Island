@@ -1314,7 +1314,9 @@ MonoBehaviour:
       actionsData:
         actions:
         - id: one
+          commands: []
         - id: two
+          commands: []
     systemData:
       _saveFilesPath: 
       _saveFileExtension: 
@@ -1322,28 +1324,51 @@ MonoBehaviour:
     gameData:
       currentExecutorID: testid0
       objectsData:
-      - name: Player
+      - name: Player 1
         id: testid0
-        prefab: {fileID: 1364527782387040274, guid: cb716fce805a0d64d84fa3b8574a9913, type: 3}
-        _transformData:
+        prefabID: Test
+        transformData:
           _positionX: 11
-          _positionY: 3
+          _positionY: 1
           _positionZ: 13
           _rotationX: 0
           _rotationY: 0
           _rotationZ: 0
           _rotationW: 0
+        actionsData:
+          actions: []
+        commandsData:
+          commands:
+          - executorID: testid0
+            isFinished: 0
+            x: 7
+            y: 1
+            z: 13
+          - executorID: testid0
+            isFinished: 0
+            x: 7
+            y: 1
+            z: 16
+          - executorID: testid0
+            isFinished: 0
+            x: 11
+            y: 1
+            z: 13
       - name: Player 2
-        id: testid2
-        prefab: {fileID: 1364527782387040274, guid: cb716fce805a0d64d84fa3b8574a9913, type: 3}
-        _transformData:
+        id: testid1
+        prefabID: Test
+        transformData:
           _positionX: 11
-          _positionY: 3
-          _positionZ: 15
+          _positionY: 1
+          _positionZ: 16
           _rotationX: 0
           _rotationY: 0
           _rotationZ: 0
           _rotationW: 0
+        actionsData:
+          actions: []
+        commandsData:
+          commands: []
 --- !u!4 &1410763620
 Transform:
   m_ObjectHideFlags: 0

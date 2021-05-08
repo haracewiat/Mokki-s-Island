@@ -10,6 +10,11 @@ public class GameData
     public string CurrentExecutorID => currentExecutorID;
     public List<ObjectData> ObjectsData => objectsData;
 
+    public void SetCurrentExecutorID (string executorID)
+    {
+        currentExecutorID = executorID;
+        EventManager.NotifyAbout(EventID.ExecutorChanged, currentExecutorID);
+    }
 
 
 }
@@ -19,7 +24,7 @@ public class ObjectData
 {
     [SerializeField] private string name;
     [SerializeField] private string id;
-    [SerializeField] private GameObject prefab;
+    [SerializeField] private string prefabID;
     [SerializeField] private TransformData transformData;
     [SerializeField] private ActionsData actionsData;
     [SerializeField] private CommandsData commandsData;
@@ -27,7 +32,7 @@ public class ObjectData
 
 
     public string ID => id;
-    public GameObject Prefab => prefab;
+    public string PrefabID => prefabID;
     public TransformData TransformData => transformData;
 
     public ActionsData ActionsData => actionsData;
@@ -38,6 +43,11 @@ public class ObjectData
     public void SetID(string id)
     {
         this.id = id;
+    }
+
+    public override string ToString()
+    {
+        return commandsData.ToString();
     }
 
 }

@@ -10,14 +10,17 @@ public class InputManager : Manager<InputManager>
     {
         if(Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("S");
             EventManager.NotifyAbout(EventID.SaveRequestMade, "");
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Debug.Log("L");
             EventManager.NotifyAbout(EventID.LoadRequestMade, "");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EventManager.NotifyAbout(EventID.Space, "");
         }
 
 

@@ -82,6 +82,7 @@
     <Compile Include="Assets\Modules\Input Module\Management\InputManager.cs" />
     <Compile Include="Assets\Modules\Data Module\Management\DataManager.cs" />
     <Compile Include="Assets\Modules\Core Module\Registry\Registry.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\Stringbuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

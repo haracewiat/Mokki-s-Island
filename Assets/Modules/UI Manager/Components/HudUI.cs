@@ -20,36 +20,22 @@ public class HudUI : Manager<HudUI>
     [SerializeField] private List<CommandData> actions = new List<CommandData>(); // reference to all commands 
 
 
-    [Header("Internal")]
-    [SerializeField] private string currentExecutorID;
+    //[Header("Internal")]
+    //[SerializeField] private string currentExecutorID;
 
     protected override void Init()
     {
-        EventManager.SubscribeTo(EventID.CommandDispatched, OnCommandDispatched);
-        // Listen to current Executor ID changed
-
-        currentExecutorID = data.GameData.CurrentExecutorID;
-
-        actions = data.GameData.ObjectsData[0].CommandsData.Commands;
-    }
-
-    private void Update()
-    {
-        UpdateDisplay();
-    }
-
-    private void OnCommandDispatched(object parameter)
-    {
-       
-
-
-
-        //UpdateDisplay();
+        InvokeRepeating("UpdateDisplay", 0, 0.5f);
     }
 
     private void UpdateDisplay()
     {
         // Clear the panel
+        //if (!Registry.GetObjectData(data.GameData.CurrentExecutorID).CommandsData.Commands.Equals(actions))
+        //{
+        // overwrite
+        actions = Registry.GetObjectData(data.GameData.CurrentExecutorID).CommandsData.Commands;
+
         for (int i = 0; i < actionsPanel.transform.childCount; i++)
             Destroy(actionsPanel.transform.GetChild(i).gameObject); // TODO: Object polling (rewrite), e.g max tiles number
 
@@ -57,8 +43,9 @@ public class HudUI : Manager<HudUI>
         foreach (CommandData actionData in actions)
         {
             newAction = Instantiate(actionTile);
-            newAction.SetCommand(actionData.ToString());
+            newAction.SetCommand(actionData);
             newAction.transform.SetParent(actionsPanel);
         }
+        //}
     }
 }
