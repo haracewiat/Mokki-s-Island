@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class ActionTileUI : MonoBehaviour
 {
     // Information about Command (must be initialized with one)
-    private CommandData command;
+    private Command command;
 
     public string id;
 
-    public void SetCommand(CommandData command)
+    public void SetCommand(Command command)
     {
         this.command = command;
     }

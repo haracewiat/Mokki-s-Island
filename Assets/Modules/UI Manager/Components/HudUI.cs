@@ -17,7 +17,7 @@ public class HudUI : Manager<HudUI>
     //[SerializeField] private List<ActionData> actions = new List<ActionData>(); // reference to all commands 
     ActionTileUI newAction;
 
-    [SerializeField] private List<CommandData> actions = new List<CommandData>(); // reference to all commands 
+    [SerializeField] private List<Command> actions = new List<Command>(); // reference to all commands 
 
 
     //[Header("Internal")]
@@ -31,21 +31,17 @@ public class HudUI : Manager<HudUI>
     private void UpdateDisplay()
     {
         // Clear the panel
-        //if (!Registry.GetObjectData(data.GameData.CurrentExecutorID).CommandsData.Commands.Equals(actions))
-        //{
-        // overwrite
         actions = Registry.GetObjectData(data.GameData.CurrentExecutorID).CommandsData.Commands;
 
         for (int i = 0; i < actionsPanel.transform.childCount; i++)
             Destroy(actionsPanel.transform.GetChild(i).gameObject); // TODO: Object polling (rewrite), e.g max tiles number
 
         // Fill the panel with updated actions
-        foreach (CommandData actionData in actions)
+        foreach (Command action in actions)
         {
             newAction = Instantiate(actionTile);
-            newAction.SetCommand(actionData);
+            newAction.SetCommand(action);
             newAction.transform.SetParent(actionsPanel);
         }
-        //}
     }
 }

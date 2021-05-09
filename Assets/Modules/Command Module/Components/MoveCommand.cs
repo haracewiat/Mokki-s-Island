@@ -2,36 +2,34 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
 public class MoveCommand : Command
 {
-    private bool _isFinished = false;
-    private Vector3 _targetLocation;
+    [SerializeField] private float x;
+    [SerializeField] private float y;
+    [SerializeField] private float z;
 
-    NavMeshAgent _navMeshAgent;
+    public Vector3 TargetPosition => new Vector3(x, y, z);
 
     public MoveCommand(string executorID, Vector3 targetLocation) : base(executorID)
     {
-        _targetLocation = targetLocation;
+        x = targetLocation.x;
+        y = targetLocation.y;
+        z = targetLocation.z;
     }
 
     public override void Execute()
     {
-        Debug.Log(executorID);
         GameObject _executorObject = Registry.GetObject(executorID);
 
-        _navMeshAgent = _executorObject.GetComponent<NavMeshAgent>();
+        NavMeshAgent _navMeshAgent = _executorObject.GetComponent<NavMeshAgent>();
+       
+        _navMeshAgent.SetDestination(TargetPosition);
 
-        _navMeshAgent.SetDestination(_targetLocation);
-
-        WaitForPathComplete();
+        WaitForPathComplete(_navMeshAgent);
     }
 
-    public override bool IsFinished()
-    {
-        return _isFinished;
-    }
-
-    private async void WaitForPathComplete()
+    private async void WaitForPathComplete(NavMeshAgent _navMeshAgent)
     {
         // Allow some time for the navMeshAgent to update its properties
         await Task.Delay(500);
@@ -40,16 +38,16 @@ public class MoveCommand : Command
         while (_navMeshAgent.pathPending || _navMeshAgent.hasPath)
             await Task.Delay(CommandManager.WaitingRate);
 
-        _isFinished = true;
+        isFinished = true;
     }
-
     public override void Abort()
     {
-        _navMeshAgent.ResetPath();
+        Registry.GetObject(executorID).GetComponent<NavMeshAgent>().ResetPath();
+        isFinished = true;
     }
 
     public override string ToString()
     {
-        return $"{GetType().Name}: {_targetLocation}";
+        return $"Move Command: {TargetPosition}";
     }
 }

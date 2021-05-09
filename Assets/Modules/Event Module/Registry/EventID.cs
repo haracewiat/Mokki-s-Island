@@ -13,7 +13,7 @@ public enum EventID
 
 
 
-    CommandDispatched, // Issued
+    CommandIssued, 
     CommandCanceled,
     Move,
     Space,

@@ -26,8 +26,9 @@ public class GameManager : Manager<GameManager>
     private void OnSpace(object parameter)
     {
         index += 1;
-        index %= 2;
+        index %= gameObjectLookupTable.Count;
 
+        Debug.Log($"Current index: {index}");
         data.GameData.SetCurrentExecutorID(data.GameData.ObjectsData[index].ID);
     }
 
@@ -55,7 +56,7 @@ public class GameManager : Manager<GameManager>
                 //GameObject gameObjectInstance = Instantiate(objectData.Prefab) as GameObject;
                 GameObject gameObjectPrefab = Resources.Load(objectData.PrefabID) as GameObject;
                 GameObject gameObjectInstance = Instantiate(gameObjectPrefab);
-                gameObjectInstance.GetComponent<Test>().SetData(objectData); 
+                gameObjectInstance.GetComponent<Entity>().SetData(objectData); 
 
                 // Store in the lookup table
                 gameObjectLookupTable.Add(objectData.ID, gameObjectInstance);

@@ -26,6 +26,7 @@ public class DataManager : Manager<DataManager>
         // EventManager.SubscribeTo(ActionID.Quicksave, OnQuicksave);
 
         EventManager.NotifyAbout(EventID.DataLoaded, _data);
+        Registry.UpdateData(_data);
     }
     
 
@@ -38,6 +39,7 @@ public class DataManager : Manager<DataManager>
     private void OnSaveFileLoaded(object parameter)
     {
         _data = (Data)parameter;
+        Registry.UpdateData(_data);
         EventManager.NotifyAbout(EventID.DataChanged, _data);
     }
 

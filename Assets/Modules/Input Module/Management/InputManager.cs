@@ -33,7 +33,7 @@ public class InputManager : Manager<InputManager>
             if (Physics.Raycast(ray, out hit))
             {
                 // EventManager.NotifyAbout(EventID.DestinationSet, hit.point);
-                EventManager.NotifyAbout(EventID.CommandDispatched, hit);
+                EventManager.NotifyAbout(EventID.CommandIssued, hit);
 
             }
         }
