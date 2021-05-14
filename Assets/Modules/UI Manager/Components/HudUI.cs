@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,11 +22,16 @@ public class HudUI : Manager<HudUI>
 
 
     //[Header("Internal")]
-    //[SerializeField] private string currentExecutorID;
+    [SerializeField] private RectTransform commandsPanel;
+    [SerializeField] private ActionTIleTEST button;
+    private ActionTIleTEST newCommand;
+
 
     protected override void Init()
     {
-        InvokeRepeating("UpdateDisplay", 0, 0.5f);
+        InvokeRepeating("UpdateDisplay", 0, 0.5f); // TODO: instead of every 0.5 s, subscribe to any update to this variable
+
+        EventManager.SubscribeTo(EventID.ObjectClicked, OnObjectClicked);
     }
 
     private void UpdateDisplay()
@@ -42,6 +48,38 @@ public class HudUI : Manager<HudUI>
             newAction = Instantiate(actionTile);
             newAction.SetCommand(action);
             newAction.transform.SetParent(actionsPanel);
+        }
+    }
+
+
+
+
+
+    // ------------------------------------
+
+    // On
+    private void OnObjectClicked(object parameter)
+    {
+        // Get the clicked object
+        GameObject clickedObject = Registry.LastClickedObject.transform.gameObject;
+
+        InteractableObject interactableObject;
+        if (!clickedObject.TryGetComponent(out interactableObject)) { return; }
+
+        // Read action associated with it
+        List<ActionID> actions = interactableObject.ActionSet.Actions;
+
+        // Clean the actions panel
+        for (int i = 1; i < commandsPanel.transform.childCount; i++)
+            Destroy(commandsPanel.transform.GetChild(i).gameObject);
+
+        // For each action, create a button
+        foreach (ActionID actionID in actions)
+        {
+            newCommand = Instantiate(button);
+            newCommand.gameObject.SetActive(true);
+            newCommand.transform.SetParent(commandsPanel);
+            newCommand.SetActionID(actionID);
         }
     }
 }

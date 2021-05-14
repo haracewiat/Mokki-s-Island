@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-// TODO: rename to entity? class that deals with object data (entity data?)
 public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected ObjectData objectData;

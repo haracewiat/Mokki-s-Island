@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CommandsData
 {
-    [SerializeReference] private List<Command> commands;
+    [SerializeReference] private List<Command> commands = new List<Command>();
 
     public List<Command> Commands => commands;
 

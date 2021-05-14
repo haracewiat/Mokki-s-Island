@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputManager : Manager<InputManager>
 {
@@ -26,16 +27,15 @@ public class InputManager : Manager<InputManager>
 
         if (Input.GetMouseButtonDown(0))
         {
+
+            if (EventSystem.current.IsPointerOverGameObject()) return; // ignore UI 
+
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
-            {
-                // EventManager.NotifyAbout(EventID.DestinationSet, hit.point);
-                EventManager.NotifyAbout(EventID.CommandIssued, hit);
-
-            }
+                Registry.UpdateLastClickedObject(hit);
         }
     }
 }

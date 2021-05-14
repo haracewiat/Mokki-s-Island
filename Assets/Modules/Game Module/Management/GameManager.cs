@@ -28,7 +28,7 @@ public class GameManager : Manager<GameManager>
         index += 1;
         index %= gameObjectLookupTable.Count;
 
-        Debug.Log($"Current index: {index}");
+        Debug.Log($"Object count: {gameObjectLookupTable.Count} \nCurrent index: {index}");
         data.GameData.SetCurrentExecutorID(data.GameData.ObjectsData[index].ID);
     }
 

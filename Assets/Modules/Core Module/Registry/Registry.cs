@@ -4,10 +4,23 @@ using UnityEngine;
 
 public static class Registry 
 {
-    private static Dictionary<string, GameObject> gameObjectLookupTable;
+    // All data
     private static Data data;
 
+    // id - monobehaviour
+    private static Dictionary<string, GameObject> gameObjectLookupTable;
+
+    // last clicked object
+    private static RaycastHit lastClickedObject;
+    // last chosen action
+    private static ActionID lastChosenAction;
+
+
+
     public static Data Data => data;
+    public static RaycastHit LastClickedObject => lastClickedObject;
+    public static ActionID LastChosenAction => lastChosenAction;
+
 
     public static GameObject GetObject(string id)
     {
@@ -32,5 +45,18 @@ public static class Registry
     public static void UpdateData(Data updatedData)
     {
         data = updatedData;
+    }
+
+    public static void UpdateLastClickedObject(RaycastHit updatedRaycastHit)
+    {
+        lastClickedObject = updatedRaycastHit;
+        EventManager.NotifyAbout(EventID.ObjectClicked, lastClickedObject);
+        Debug.Log($"[UpdateLastClickedObject]: {updatedRaycastHit.transform.gameObject}");
+    }
+
+    public static void UpdateLastChosenAction(ActionID actionID)
+    {
+        lastChosenAction = actionID;
+        Debug.Log($"[UpdateLastChosenAction]: {actionID}");
     }
 }

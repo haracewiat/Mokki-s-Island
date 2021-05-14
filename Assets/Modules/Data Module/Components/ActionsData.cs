@@ -18,10 +18,4 @@ public class ActionsData
 
 }
 
-// Change to scriptable object?
-[System.Serializable]
-public class Action
-{
-    [SerializeField] public string id; // Type of the command 
-    [SerializeField] private List<Command> commands;
-}
+

@@ -11,7 +11,7 @@ public enum EventID
     SaveFileLoaded,
     SaveFileSaved,
 
-
+    ObjectClicked,
 
     CommandIssued, 
     CommandCanceled,

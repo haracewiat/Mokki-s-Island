@@ -13,7 +13,6 @@ public abstract class Command
         this.executorID = executorID;
     }
 
-    //public abstract bool IsFinished();
     public abstract void Execute();
     public abstract void Abort();
 }

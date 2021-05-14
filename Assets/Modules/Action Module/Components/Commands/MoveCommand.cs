@@ -5,17 +5,16 @@ using UnityEngine.AI;
 [System.Serializable]
 public class MoveCommand : Command
 {
-    [SerializeField] private float x;
-    [SerializeField] private float y;
-    [SerializeField] private float z;
+    [SerializeField] private Vector3Data destination;
 
-    public Vector3 TargetPosition => new Vector3(x, y, z);
-
-    public MoveCommand(string executorID, Vector3 targetLocation) : base(executorID)
+    public MoveCommand(string executorID) : base(executorID)
     {
-        x = targetLocation.x;
-        y = targetLocation.y;
-        z = targetLocation.z;
+        this.destination = new Vector3Data(Registry.LastClickedObject.point);
+    }
+
+    public MoveCommand(string executorID, Vector3 destination) : base(executorID)
+    {
+        this.destination = new Vector3Data(destination);
     }
 
     public override void Execute()
@@ -24,7 +23,7 @@ public class MoveCommand : Command
 
         NavMeshAgent _navMeshAgent = _executorObject.GetComponent<NavMeshAgent>();
        
-        _navMeshAgent.SetDestination(TargetPosition);
+        _navMeshAgent.SetDestination(destination.Vector3);
 
         WaitForPathComplete(_navMeshAgent);
     }
@@ -36,7 +35,7 @@ public class MoveCommand : Command
 
         // Slow poll
         while (_navMeshAgent.pathPending || _navMeshAgent.hasPath)
-            await Task.Delay(CommandManager.WaitingRate);
+            await Task.Delay(ActionManager.WaitingRate);
 
         isFinished = true;
     }
@@ -48,6 +47,6 @@ public class MoveCommand : Command
 
     public override string ToString()
     {
-        return $"Move Command: {TargetPosition}";
+        return $"Move Command: {destination.Vector3}";
     }
 }

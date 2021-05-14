@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6A2A0C20-2419-BFF7-F24A-4EF699610497}</ProjectGuid>
+    <ProjectGuid>{39F68201-8DD2-0A3F-D586-EC705C5944E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2020_3_0;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2020_3_0;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;DEVELOPMENT_BUILD</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -56,33 +56,43 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Modules\Action Module\Registry\ActionID.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\Vector3Data.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\TransformData.cs" />
     <Compile Include="Assets\Modules\Save Module\Components\Save.cs" />
-    <Compile Include="Assets\Modules\Command Module\Management\CommandManager.cs" />
+    <Compile Include="Assets\Modules\Action Module\ActionTIleTEST.cs" />
+    <Compile Include="Assets\Modules\Action Module\Management\ActionManager.cs" />
     <Compile Include="Assets\Modules\Player Module\Monobehaviour\PlayerMonobehaviour.cs" />
     <Compile Include="Assets\Modules\Event Module\Components\Event.cs" />
-    <Compile Include="Assets\Modules\Command Module\Components\MoveCommand.cs" />
+    <Compile Include="Assets\Modules\Action Module\Components\Commands\MoveCommand.cs" />
+    <Compile Include="Assets\Modules\Action Module\Registry\Action.cs" />
     <Compile Include="Assets\Modules\Event Module\Registry\EventID.cs" />
+    <Compile Include="Assets\Modules\Action Module\Seed.cs" />
     <Compile Include="Assets\Modules\Core Module\Registry\Manager.cs" />
     <Compile Include="Assets\Modules\UI Manager\Components\ActionTileUI.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\QuaternionData.cs" />
     <Compile Include="Assets\Modules\Data Module\Management\DataManager.cs" />
     <Compile Include="Assets\Modules\Core Module\Registry\Registry.cs" />
-    <Compile Include="Assets\Modules\Command Module\Registry\Command.cs" />
+    <Compile Include="Assets\Modules\Action Module\Components\Object.cs" />
+    <Compile Include="Assets\Modules\Action Module\Registry\Command.cs" />
     <Compile Include="Assets\Modules\Data Module\Registry\Data.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\CommandsData.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\GameData.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\MotionData.cs" />
     <Compile Include="Assets\Modules\Save Module\Management\SaveManager.cs" />
     <Compile Include="Assets\Modules\UI Manager\Management\UIManager.cs" />
-    <Compile Include="Assets\Modules\Command Module\Components\RunCommand.cs" />
+    <Compile Include="Assets\Modules\Action Module\Components\Actions\PlantAction.cs" />
+    <Compile Include="Assets\Modules\Game Module\Entity.cs" />
+    <Compile Include="Assets\Modules\Action Module\Components\Commands\TestCommand.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\SystemData.cs" />
+    <Compile Include="Assets\Modules\Action Module\Registry\ActionSet.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\ActionsData.cs" />
     <Compile Include="Assets\Modules\UI Manager\Components\HudUI.cs" />
+    <Compile Include="Assets\Modules\Action Module\Components\InteractableObject.cs" />
     <Compile Include="Assets\Modules\Game Module\Management\GameManager.cs" />
     <Compile Include="Assets\Modules\Event Module\Management\EventManager.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\PlayerData.cs" />
     <Compile Include="Assets\Modules\Input Module\Management\InputManager.cs" />
-    <Compile Include="Assets\Modules\Entity.cs" />
-    <Compile Include="Assets\Modules\Data Module\Components\CommandsData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
