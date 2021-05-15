@@ -73,7 +73,7 @@
     <Compile Include="Assets\Modules\Data Module\Components\QuaternionData.cs" />
     <Compile Include="Assets\Modules\Data Module\Management\DataManager.cs" />
     <Compile Include="Assets\Modules\Core Module\Registry\Registry.cs" />
-    <Compile Include="Assets\Modules\Action Module\Components\Object.cs" />
+    <Compile Include="Assets\Modules\Object.cs" />
     <Compile Include="Assets\Modules\Action Module\Registry\Command.cs" />
     <Compile Include="Assets\Modules\Data Module\Registry\Data.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\CommandsData.cs" />
@@ -84,13 +84,15 @@
     <Compile Include="Assets\Modules\Action Module\Components\Actions\PlantAction.cs" />
     <Compile Include="Assets\Modules\Game Module\Entity.cs" />
     <Compile Include="Assets\Modules\Action Module\Components\Commands\TestCommand.cs" />
+    <Compile Include="Assets\Modules\Action Module\Components\Actions\WalkAction.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\SystemData.cs" />
     <Compile Include="Assets\Modules\Action Module\Registry\ActionSet.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\ActionsData.cs" />
     <Compile Include="Assets\Modules\UI Manager\Components\HudUI.cs" />
-    <Compile Include="Assets\Modules\Action Module\Components\InteractableObject.cs" />
+    <Compile Include="Assets\Modules\InteractableObject.cs" />
     <Compile Include="Assets\Modules\Game Module\Management\GameManager.cs" />
     <Compile Include="Assets\Modules\Event Module\Management\EventManager.cs" />
+    <Compile Include="Assets\Modules\Data Module\Components\ObjectData.cs" />
     <Compile Include="Assets\Modules\Data Module\Components\PlayerData.cs" />
     <Compile Include="Assets\Modules\Input Module\Management\InputManager.cs" />
   </ItemGroup>

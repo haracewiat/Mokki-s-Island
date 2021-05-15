@@ -1,110 +1,95 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour
+public abstract class Entity : InteractableObject
 {
-    [SerializeField] protected ObjectData objectData;
+    [SerializeField] private Action currentAction;
 
     [SerializeField] private bool _isCurrentlyExecuting;
-    [SerializeField] private Command currentCommand;
     [SerializeField] private bool stopExecuting = false;
 
-    public ObjectData ObjectData => objectData;
-
-    public void SetData(ObjectData objectData)
-    {
-        this.objectData = objectData;
-
-        transform.position = objectData.TransformData.Position;
-        transform.rotation = objectData.TransformData.Rotation;
-
-        Init();
-    }
 
     private void Start()
     {
         // Events
-        EventManager.SubscribeTo(EventID.Move, OnCommand);
-        EventManager.SubscribeTo(EventID.CommandCanceled, OnCommandCanceled);
+        EventManager.SubscribeTo(EventID.Move, OnAction);
+        EventManager.SubscribeTo(EventID.CommandCanceled, OnActionCanceled);
 
         // Execute commands if any found
-        if (Registry.GetObjectData(objectData.ID).CommandsData.Commands.Count > 0)
+        if (Registry.GetObjectData(objectData.ID).ActionsData.Actions.Count > 0)
         {
             if (!_isCurrentlyExecuting)
             {
-                StartCoroutine(ExecuteCommands());
+                StartCoroutine(ExecuteActions());
             }
         }
     }
 
-    private void OnCommand(object parameter)
+    private void OnAction(object parameter)
     {
         // Check if I'm the executor
-        if (((Command)parameter).ExecutorID != objectData.ID) { return; }
+        if (((Action)parameter).ExecutorID != objectData.ID) { return; }
 
         // Add to the execute list 
-        //_commands.Add((MoveCommand)parameter);
-        Registry.GetObjectData(objectData.ID).CommandsData.PushCommand((Command)parameter);
+        Registry.GetObjectData(objectData.ID).ActionsData.PushAction((Action)parameter);
 
 
         // If not currently in execution, start executing
         if (!_isCurrentlyExecuting)
         {
             _isCurrentlyExecuting = true;
-            StartCoroutine(ExecuteCommands());
+            StartCoroutine(ExecuteActions());
         }
     }
 
-    private void OnCommandCanceled(object parameter)
+    private void OnActionCanceled(object parameter)
     {
         // Check if I'm the executor
-        if (((Command)parameter).ExecutorID != objectData.ID) { return; }
+        if (((Action)parameter).ExecutorID != objectData.ID) { return; }
 
         // If currently executing, stop
-        if ((((Command)parameter) == currentCommand) && _isCurrentlyExecuting)
+        if ((((Action)parameter) == currentAction) && _isCurrentlyExecuting)
             stopExecuting = true;
         else
         {
             // Remove from the execute list 
-            Registry.GetObjectData(objectData.ID).CommandsData.PopCommand();
+            Registry.GetObjectData(objectData.ID).ActionsData.PopAction();
         }
 
     }
 
-    private IEnumerator ExecuteCommands()
+    private IEnumerator ExecuteActions()
     {
         _isCurrentlyExecuting = true;
 
         // Iterate through the commands queue
-        while (Registry.GetObjectData(objectData.ID).CommandsData.Commands.Count != 0)
+        while (Registry.GetObjectData(objectData.ID).ActionsData.Actions.Count != 0)
         {
-            //_currentCommand = _commands[0];
-            currentCommand = Registry.GetObjectData(objectData.ID).CommandsData.Commands[0];
+            currentAction = Registry.GetObjectData(objectData.ID).ActionsData.Actions[0];
 
-            //_currentCommand.Execute();
-            currentCommand.Execute();
+            currentAction.Execute();
 
             // Wait until the command finishes executing
-            while (!currentCommand.IsFinished)
+            while (!currentAction.IsFinished)
             {
+                Debug.Log("...");
+                
                 if (!stopExecuting)
                     yield return null;
                 else
                 {
-                    currentCommand.Abort();
+                    currentAction.Abort();
                     stopExecuting = false;
                 }
             }
 
-            //_commands.Remove(_currentCommand);
-            Registry.GetObjectData(objectData.ID).CommandsData.PopCommand();
+            //_commands.Remove(_currentAction);
+            Registry.GetObjectData(objectData.ID).ActionsData.PopAction();
         }
 
-        currentCommand = null;
+        currentAction = null;
 
         _isCurrentlyExecuting = false;
     }
-
-    protected abstract void Init();
 
 }

@@ -7,14 +7,9 @@ public class MoveCommand : Command
 {
     [SerializeField] private Vector3Data destination;
 
-    public MoveCommand(string executorID) : base(executorID)
+    public MoveCommand(string executorID, Vector3Data destination) : base(executorID)
     {
-        this.destination = new Vector3Data(Registry.LastClickedObject.point);
-    }
-
-    public MoveCommand(string executorID, Vector3 destination) : base(executorID)
-    {
-        this.destination = new Vector3Data(destination);
+        this.destination = destination;
     }
 
     public override void Execute()

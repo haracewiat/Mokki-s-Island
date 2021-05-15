@@ -19,12 +19,15 @@ public class ActionManager : Manager<ActionManager>
     private void OnCommandIssued(object parameter)
     {
         // Get the clicked object
-        GameObject clickedObject = Registry.LastClickedObject.transform.gameObject;
+        Object clickedObject = Registry.LastClickedObject.transform.gameObject.GetComponent<Object>();
+        Vector3Data clickedPoint = new Vector3Data(Registry.LastClickedObject.point);
         ActionID actionID = Registry.LastChosenAction;
 
         // Fire a relevant action (ActionID == name of the action class)
         Type type = Type.GetType(actionID.ToString());
-        object action = Activator.CreateInstance(type, new object[] { data.GameData.CurrentExecutorID });
+        object[] parameters = new object[] { data.GameData.CurrentExecutorID, clickedObject.ObjectData.ID, clickedPoint};
+
+        object action = Activator.CreateInstance(type, parameters);
         EventManager.NotifyAbout(EventID.Move, action);
     }
 }

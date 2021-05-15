@@ -1,7 +1,6 @@
 using UnityEngine;
 
-// TODO: Make abstract 
-public class InteractableObject : Object
+public abstract class InteractableObject : Object
 {
     [SerializeField] private ActionSet actionSet;
 

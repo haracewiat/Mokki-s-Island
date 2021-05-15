@@ -1,8 +1,5 @@
 public enum ActionID
 {
-    MoveCommand,
-    TestCommand,
-    SleepCommand,
-
+    WalkAction,
     PlantAction,
 }

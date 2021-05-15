@@ -31,7 +31,7 @@ public static class Registry
     public static ObjectData GetObjectData(string id)
     {
         // TODO: try get
-        ObjectData objectData = gameObjectLookupTable[id].GetComponent<Entity>().ObjectData;
+        ObjectData objectData = gameObjectLookupTable[id].GetComponent<Object>().ObjectData;
 
         objectData = data.GameData.ObjectsData.Find(x => x.ID == id);
         return objectData;
