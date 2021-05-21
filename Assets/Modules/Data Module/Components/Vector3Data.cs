@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Text;
+using UnityEngine;
 
 [System.Serializable]
-public class Vector3Data
+public class Vector3Data : Data
 {
     [SerializeField] private float x;
     [SerializeField] private float y;
@@ -15,10 +16,17 @@ public class Vector3Data
 
     public void Update(Vector3 vector3)
     {
-        Debug.Log("2. " + "Updating...");
         x = vector3.x;
         y = vector3.y;
         z = vector3.z;
-        Debug.Log("3. " + Vector3);
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine($"Vector3: {Vector3}");
+
+        return sb.ToString();
     }
 }

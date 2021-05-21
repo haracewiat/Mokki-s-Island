@@ -29,26 +29,26 @@ public class HudUI : Manager<HudUI>
 
     protected override void Init()
     {
-        InvokeRepeating("UpdateDisplay", 0, 0.5f); // TODO: instead of every 0.5 s, subscribe to any update to this variable
+        //InvokeRepeating("UpdateDisplay", 0, 0.5f); // TODO: instead of every 0.5 s, subscribe to any update to this variable
 
         EventManager.SubscribeTo(EventID.ObjectClicked, OnObjectClicked);
     }
 
     private void UpdateDisplay()
     {
-        // Clear the panel
-        actions = Registry.GetObjectData(data.GameData.CurrentExecutorID).CommandsData.Commands;
+        //// Clear the panel
+        //actions = Registry.GetObjectData(data.GameData.CurrentExecutorID).CommandsData.Commands;
 
-        for (int i = 0; i < actionsPanel.transform.childCount; i++)
-            Destroy(actionsPanel.transform.GetChild(i).gameObject); // TODO: Object polling (rewrite), e.g max tiles number
+        //for (int i = 0; i < actionsPanel.transform.childCount; i++)
+        //    Destroy(actionsPanel.transform.GetChild(i).gameObject); // TODO: Object polling (rewrite), e.g max tiles number
 
-        // Fill the panel with updated actions
-        foreach (Command action in actions)
-        {
-            newAction = Instantiate(actionTile);
-            newAction.SetCommand(action);
-            newAction.transform.SetParent(actionsPanel);
-        }
+        //// Fill the panel with updated actions
+        //foreach (Command action in actions)
+        //{
+        //    newAction = Instantiate(actionTile);
+        //    newAction.SetCommand(action);
+        //    newAction.transform.SetParent(actionsPanel);
+        //}
     }
 
 
@@ -63,7 +63,7 @@ public class HudUI : Manager<HudUI>
         // Get the clicked object
         GameObject clickedObject = Registry.LastClickedObject.transform.gameObject;
 
-        InteractableObject interactableObject;
+        IInteractable interactableObject; // TODO: IInteractable
         if (!clickedObject.TryGetComponent(out interactableObject)) { return; }
 
         // Read action associated with it

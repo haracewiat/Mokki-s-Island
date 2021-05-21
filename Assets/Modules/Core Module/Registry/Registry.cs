@@ -1,17 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Registry 
 {
     // All data
-    private static Data data;
+    private static SaveData data;
 
     // id - monobehaviour
-    private static Dictionary<string, GameObject> gameObjectLookupTable;
+    private static Dictionary<string, GameObject> gameObjectLookupTable = new Dictionary<string, GameObject>();
 
     // last clicked object
     private static RaycastHit lastClickedObject;
+
     // last chosen action
     private static ActionID lastChosenAction;
 
@@ -42,7 +43,7 @@ public static class Registry
         gameObjectLookupTable = updatedGameObjectLookupTable;
     }
 
-    public static void UpdateData(Data updatedData)
+    public static void UpdateData(SaveData updatedData)
     {
         data = updatedData;
     }
@@ -58,5 +59,42 @@ public static class Registry
     {
         lastChosenAction = actionID;
         Debug.Log($"[UpdateLastChosenAction]: {actionID}");
+    }
+
+    public static void RegisterGameObject(string ID, GameObject gameObject)
+    {
+        gameObjectLookupTable.Add(ID, gameObject);
+    }
+
+
+
+    // --------------------------------------------------
+    public static Dictionary<string, Object> ObjectLookupTable = new Dictionary<string, Object>();
+    public static Dictionary<GameObject, string> MonobehaviourLookupTable = new Dictionary<GameObject, string>();
+
+
+    public static void RegisterObject(string ID, Object _object)
+    {
+        ObjectLookupTable.Add(ID, _object);
+    }
+
+    public static void RegisterMonobehaviour(GameObject gameObject, string ID)
+    {
+        MonobehaviourLookupTable.Add(gameObject, ID);
+    }
+
+    public static GameObject GetGameObject(string id)
+    {
+        return MonobehaviourLookupTable.FirstOrDefault(gameObject => gameObject.Value == id).Key;
+    }
+
+    public static string GetObjectID(GameObject gameObject)
+    {
+        return MonobehaviourLookupTable[gameObject];
+    }
+
+    public static Object GetObjectTemp(string ID)
+    {
+        return ObjectLookupTable[ID];
     }
 }

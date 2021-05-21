@@ -1,16 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class DataManager : Manager<DataManager>
 {
-    [Header("Current data")]
-    [SerializeField] private Data _data;
+    [Header("Default data")]
+    [SerializeField] private SaveData _data;
 
     [Header("Cached default data")]
-    private Data _defaultData;
+    private SaveData _defaultData;
 
     protected override void Awake()
     {
@@ -38,7 +34,7 @@ public class DataManager : Manager<DataManager>
 
     private void OnSaveFileLoaded(object parameter)
     {
-        _data = (Data)parameter;
+        _data = (SaveData)parameter;
         Registry.UpdateData(_data);
         EventManager.NotifyAbout(EventID.DataChanged, _data);
     }

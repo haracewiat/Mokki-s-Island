@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class WalkAction : Action  
 {
 
@@ -11,6 +12,6 @@ public class WalkAction : Action
 
         // Declare commands
         commands.PushCommand(new MoveCommand(executorID, clickedPoint));
-        commands.PushCommand(new MoveCommand(executorID, new Vector3Data(Vector3.one)));
+        //commands.PushCommand(new MoveCommand(executorID, new Vector3Data(Vector3.one)));
     }
 }

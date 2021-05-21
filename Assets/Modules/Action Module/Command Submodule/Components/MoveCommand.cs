@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,7 +15,7 @@ public class MoveCommand : Command
 
     public override void Execute()
     {
-        GameObject _executorObject = Registry.GetObject(executorID);
+        GameObject _executorObject = Registry.GetGameObject(executorID);
 
         NavMeshAgent _navMeshAgent = _executorObject.GetComponent<NavMeshAgent>();
        
@@ -36,7 +37,7 @@ public class MoveCommand : Command
     }
     public override void Abort()
     {
-        Registry.GetObject(executorID).GetComponent<NavMeshAgent>().ResetPath();
+        Registry.GetGameObject(executorID).GetComponent<NavMeshAgent>().ResetPath();
         isFinished = true;
     }
 

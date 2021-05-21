@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Manager<T> : MonoBehaviour
 {
     private static Manager<T> _instance;
 
-    [SerializeField] protected Data data = null;
+    [SerializeField] protected SaveData data = null;
 
     public static Manager<T> Instance => _instance;
 
@@ -36,11 +35,11 @@ public abstract class Manager<T> : MonoBehaviour
 
     protected virtual void OnDataLoaded(object parameter)
     {
-        if (data != null) { data = (Data)parameter; }
+        if (data != null) { data = (SaveData)parameter; }
     }
 
     protected virtual void OnDataChanged(object parameter)
     {
-        data = (Data)parameter;
+        data = (SaveData)parameter;
     }
 }

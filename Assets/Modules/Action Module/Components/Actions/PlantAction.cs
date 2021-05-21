@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class PlantAction : Action  
 {
     [SerializeField] private string seedID;

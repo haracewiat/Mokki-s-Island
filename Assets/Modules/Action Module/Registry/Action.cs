@@ -39,8 +39,8 @@ public abstract class Action
             // Wait until the command finishes executing
             while (!currentCommand.IsFinished)
             {
-                Debug.Log($"[{GetType().Name}] Waiting..."); // FIX: Async doesn't stop running when game is stopped
-                await Task.Delay(ActionManager.WaitingRate); // TODO: Move to Registry/data
+                Debug.Log($"[{GetType().Name}] Waiting..."); // BUG: Async doesn't stop running when game is stopped
+                await Task.Delay(ActionManager.WaitingRate); // TODO: Move Waiting Rate to Registry/data
             }
 
             commands.PopCommand();

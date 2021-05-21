@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Text;
+using UnityEngine;
 
 [System.Serializable]
-public class QuaternionData
+public class QuaternionData : Data
 {
     [SerializeField] private float x;
     [SerializeField] private float y;
@@ -16,5 +17,14 @@ public class QuaternionData
         y = quaternion.y;
         z = quaternion.z;
         w = quaternion.w;
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine($"Quaternion: {Quaternion} (Vector3: {Quaternion.eulerAngles})");
+        
+        return sb.ToString();
     }
 }

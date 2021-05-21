@@ -29,8 +29,8 @@ public class SaveManager : Manager<SaveManager>
 
     private void OnGameDataLoaded(object parameter)
     {
-        _saveFileExtension = ((Data)parameter).SystemData.SaveFileExtension;
-        _saveFilesPath = ((Data)parameter).SystemData.SaveFilesPath;
+        _saveFileExtension = ((SaveData)parameter).SystemData.SaveFileExtension;
+        _saveFilesPath = ((SaveData)parameter).SystemData.SaveFilesPath;
     }
 
     private void OnLoadRequestMade(object parameter)
