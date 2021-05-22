@@ -19,7 +19,8 @@ public class ActionTileUI : MonoBehaviour
     public void OnClick()
     {
         Debug.Log($"Clicked: {command}");
-        EventManager.NotifyAbout(EventID.CommandCanceled, command);
+        // TODO: which command cancelled? -> actions data should know...
+        EventManager.NotifyAbout(EventID.CommandCanceled);
 
         Destroy(gameObject);
     }

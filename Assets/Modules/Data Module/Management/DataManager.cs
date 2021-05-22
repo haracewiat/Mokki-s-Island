@@ -21,38 +21,42 @@ public class DataManager : Manager<DataManager>
         EventManager.SubscribeTo(EventID.SaveRequestMade, OnSaveRequestMade);
         // EventManager.SubscribeTo(ActionID.Quicksave, OnQuicksave);
 
-        EventManager.NotifyAbout(EventID.DataLoaded, _data);
+        EventManager.NotifyAbout(EventID.DataLoaded);
         Registry.UpdateData(_data);
     }
     
 
-    private void OnNewGameRequested(object parameter)
+    private void OnNewGameRequested()
     {
         _data = _defaultData;
-        EventManager.NotifyAbout(EventID.DataChanged, _data);
+        EventManager.NotifyAbout(EventID.DataChanged);
     }
 
-    private void OnSaveFileLoaded(object parameter)
+    private void OnSaveFileLoaded()
     {
-        _data = (SaveData)parameter;
         Registry.UpdateData(_data);
-        EventManager.NotifyAbout(EventID.DataChanged, _data);
+        EventManager.NotifyAbout(EventID.DataChanged);
     }
 
-    private void OnGameDataRequested(object parameter)
+    private void OnGameDataRequested()
     {
-        EventManager.NotifyAbout(EventID.DataLoaded, _data);
+        EventManager.NotifyAbout(EventID.DataLoaded);
     }
 
-    private void OnSaveRequestMade(object parameter)
+    private void OnSaveRequestMade()
     {
         // string fileName = (string)parameter;
-        EventManager.NotifyAbout(EventID.DataSaved, new Save("/file1", _data));
+        // EventManager.NotifyAbout(EventID.DataSaved, new Save("/file1", _data));
+        // TODO: Create save file in registry (only save name really, which should be in data itself)
+        EventManager.NotifyAbout(EventID.DataSaved);
+
     }
 
-    private void OnQuicksave(object parameter)
+    private void OnQuicksave()
     {
         string fileName = _data.SystemData.CurrentSaveFileName;
-        EventManager.NotifyAbout(EventID.DataSaved, new Save(fileName, _data));
+        // EventManager.NotifyAbout(EventID.DataSaved, new Save(fileName, _data));
+        EventManager.NotifyAbout(EventID.DataSaved);
+
     }
 }

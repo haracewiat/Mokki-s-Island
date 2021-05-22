@@ -2,14 +2,14 @@ using System;
 
 public class Event
 {
-    private Enum _eventID;
-    private event Action<object> _action;
+    private Enum eventID;
+    private event System.Action action;
 
-    public Event(Enum eventID) { _eventID = eventID; }
+    public Event(Enum eventID) { this.eventID = eventID; }
 
-    public void AddSubscriber(Action<object> subscribingMethod) { _action += subscribingMethod; }
+    public void AddSubscriber(System.Action subscribingMethod) { action += subscribingMethod; }
 
-    public void RemoveSubscriber(Action<object> subscribingMethod) { _action -= subscribingMethod; }
+    public void RemoveSubscriber(System.Action subscribingMethod) { action -= subscribingMethod; }
 
-    public void SendNotification(object parameter) { _action?.Invoke(parameter); }
+    public void SendNotification() { action?.Invoke(); }
 }

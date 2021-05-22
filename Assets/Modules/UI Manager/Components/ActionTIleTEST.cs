@@ -19,7 +19,7 @@ public class ActionTIleTEST : MonoBehaviour
     public void OnClick()
     {
         Registry.UpdateLastChosenAction(actionID);
-        EventManager.NotifyAbout(EventID.CommandIssued, "");
+        EventManager.NotifyAbout(EventID.CommandIssued);
 
         // Clean the panel
         for (int i = 1; i < transform.parent.transform.childCount; i++)

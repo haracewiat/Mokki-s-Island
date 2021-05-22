@@ -26,20 +26,32 @@ public abstract class Manager<T> : MonoBehaviour
         EventManager.SubscribeTo(EventID.DataLoaded, OnDataLoaded);
         EventManager.SubscribeTo(EventID.DataChanged, OnDataChanged);
 
-        EventManager.NotifyAbout(EventID.DataRequested, "");
+        EventManager.NotifyAbout(EventID.DataRequested);
 
         Init();
     }
 
     protected virtual void Init() { }
 
-    protected virtual void OnDataLoaded(object parameter)
+    //protected virtual void OnDataLoaded(object parameter)
+    //{
+    //    if (data != null) { data = (SaveData)parameter; }
+    //}
+
+    //protected virtual void OnDataChanged(object parameter)
+    //{
+    //    data = (SaveData)parameter;
+    //}
+
+    // TODO: No need to keep data: it is now in the registry
+    protected virtual void OnDataLoaded()
     {
-        if (data != null) { data = (SaveData)parameter; }
+        // TODO: Needed? It always holds reference...
+        if (data != null) { data = (SaveData)Registry.Data; }
     }
 
-    protected virtual void OnDataChanged(object parameter)
+    protected virtual void OnDataChanged()
     {
-        data = (SaveData)parameter;
+        data = (SaveData)Registry.Data;
     }
 }

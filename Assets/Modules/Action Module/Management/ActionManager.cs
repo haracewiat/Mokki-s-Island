@@ -16,7 +16,7 @@ public class ActionManager : Manager<ActionManager>
         EventManager.SubscribeTo(EventID.CommandIssued, OnCommandIssued);
     }
 
-    private void OnCommandIssued(object parameter)
+    private void OnCommandIssued()
     {
 
         // TODO: Refactor function OnCommandIssued in Action Manager

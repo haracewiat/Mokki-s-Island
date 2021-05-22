@@ -24,29 +24,33 @@ public class SaveManager : Manager<SaveManager>
         EventManager.SubscribeTo(EventID.LoadRequestMade, OnLoadRequestMade);
         EventManager.SubscribeTo(EventID.DataSaved, OnGameDataSaved);
 
-        EventManager.NotifyAbout(EventID.DataRequested, "");
+        EventManager.NotifyAbout(EventID.DataRequested);
     }
 
-    private void OnGameDataLoaded(object parameter)
+    private void OnGameDataLoaded()
     {
-        _saveFileExtension = ((SaveData)parameter).SystemData.SaveFileExtension;
-        _saveFilesPath = ((SaveData)parameter).SystemData.SaveFilesPath;
+        _saveFileExtension = ((SaveData)Registry.Data).SystemData.SaveFileExtension;
+        _saveFilesPath = ((SaveData)Registry.Data).SystemData.SaveFilesPath;
     }
 
-    private void OnLoadRequestMade(object parameter)
+    private void OnLoadRequestMade()
     {
         // Load the indicated file 
         // Data loadedData = (Data)Load((string)parameter);
         Data loadedData = (Data)Load("/file1");
 
-        EventManager.NotifyAbout(EventID.SaveFileLoaded, loadedData);
+        // EventManager.NotifyAbout(EventID.SaveFileLoaded, loadedData);
+        EventManager.NotifyAbout(EventID.SaveFileLoaded);
+
     }
 
 
-    private void OnGameDataSaved(object parameter)
+    private void OnGameDataSaved()
     {
-        string fileName = ((Save)parameter).FileName;
-        object objectToSave = ((Save)parameter).ObjectToSave;
+        // TODO: extract from registry data...
+        SaveData parameter = (SaveData)Registry.Data;
+        string fileName = parameter.SystemData.CurrentSaveFileName;
+        object objectToSave = parameter;
 
         fileName = fileName == string.Empty ? SetDefaultFileName() : fileName;
 
@@ -72,7 +76,7 @@ public class SaveManager : Manager<SaveManager>
         using FileStream fileStream = new FileStream(_saveFilesPath + fileName + _saveFileExtension, FileMode.Create);
         binaryFormatter.Serialize(fileStream, objectToSave);
 
-        EventManager.NotifyAbout(EventID.SaveFileSaved, "");
+        EventManager.NotifyAbout(EventID.SaveFileSaved);
     }
 
     private object Load(string fileName)

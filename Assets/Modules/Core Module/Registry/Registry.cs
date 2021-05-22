@@ -51,14 +51,12 @@ public static class Registry
     public static void UpdateLastClickedObject(RaycastHit updatedRaycastHit)
     {
         lastClickedObject = updatedRaycastHit;
-        EventManager.NotifyAbout(EventID.ObjectClicked, lastClickedObject);
-        Debug.Log($"[UpdateLastClickedObject]: {updatedRaycastHit.transform.gameObject}");
+        EventManager.NotifyAbout(EventID.ObjectClicked);
     }
 
     public static void UpdateLastChosenAction(ActionID actionID)
     {
         lastChosenAction = actionID;
-        Debug.Log($"[UpdateLastChosenAction]: {actionID}");
     }
 
     public static void RegisterGameObject(string ID, GameObject gameObject)

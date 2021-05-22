@@ -58,7 +58,7 @@ public class HudUI : Manager<HudUI>
     // ------------------------------------
 
     // On
-    private void OnObjectClicked(object parameter)
+    private void OnObjectClicked()
     {
         // Get the clicked object
         GameObject clickedObject = Registry.LastClickedObject.transform.gameObject;

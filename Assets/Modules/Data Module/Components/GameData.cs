@@ -33,10 +33,12 @@ public class GameData
         return list;
     }
 
-    public void SetCurrentExecutorID (string executorID)
+    public void SetCurrentExecutorID ()
     {
-        currentExecutorID = executorID;
-        EventManager.NotifyAbout(EventID.ExecutorChanged, currentExecutorID);
+        //currentExecutorID = executorID;
+        //EventManager.NotifyAbout(EventID.ExecutorChanged);
+
+        // TODO: Allow to change current executor without event parameters
     }
 
 

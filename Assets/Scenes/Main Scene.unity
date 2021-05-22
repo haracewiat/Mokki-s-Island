@@ -346,6 +346,8 @@ MonoBehaviour:
       seedsData: []
       playersData: []
   _camera: {fileID: 963194227}
+  defaultCursor: {fileID: 2800000, guid: c7d549c043000ba47a27b3e3e94a5b84, type: 3}
+  pointingCursor: {fileID: 2800000, guid: 00d2f36cc68b3c74aba850674aaa8dcc, type: 3}
   references:
     version: 1
     00000000:

@@ -6,6 +6,10 @@ public class SeedMonobehaviour : MonoBehaviour, IInteractable
     private string ID;
     public ActionSet ActionSet => actionSet;
 
+    void OnGUI()
+    {
+        GUI.skin.settings.cursorColor = Color.cyan;
+    }
     private void Start()
     {
         ID = Registry.GetObjectID(gameObject);

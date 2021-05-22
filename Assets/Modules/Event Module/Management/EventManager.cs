@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class EventManager : Manager<EventManager>
 {
-    private static Dictionary<Enum, Event> _events = new Dictionary<Enum, Event>();
+    private static Dictionary<Enum, Event> events = new Dictionary<Enum, Event>();
 
     protected override void Awake()
     {
@@ -16,16 +14,16 @@ public class EventManager : Manager<EventManager>
     private static void LoadEvents()
     {
         foreach (EventID id in Enum.GetValues(typeof(EventID)))
-            _events.Add(id, new Event(id));
+            events.Add(id, new Event(id));
     }
 
-    public static void NotifyAbout<T>(Enum eventId, T parameter)
+    public static void NotifyAbout(Enum eventId)
     {
-        _events[eventId].SendNotification(parameter);
+        events[eventId].SendNotification();
     }
-    public static void SubscribeTo(Enum eventId, Action<object> subscribingMethod)
+    public static void SubscribeTo(Enum eventId, System.Action subscribingMethod)
     {
-        _events[eventId].AddSubscriber(subscribingMethod);
+        events[eventId].AddSubscriber(subscribingMethod);
     }
 
 }

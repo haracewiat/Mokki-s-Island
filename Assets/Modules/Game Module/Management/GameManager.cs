@@ -7,10 +7,10 @@ public class GameManager : Manager<GameManager>
     {
         EventManager.SubscribeTo(EventID.Space, OnSpace);
 
-        OnSpace(0);
+        OnSpace();
     }
 
-    private void OnSpace(object parameter)
+    private void OnSpace()
     {
         //index += 1;
         //index %= gameObjectLookupTable.Count;
@@ -21,9 +21,9 @@ public class GameManager : Manager<GameManager>
 
 
     // TODO: change OnDataLoaded to OnDataChanged (currently using flag)
-    protected override void OnDataLoaded(object parameter)
+    protected override void OnDataLoaded()
     {
-        base.OnDataLoaded(parameter);
+        base.OnDataLoaded();
 
         LoadObjects();
     }
